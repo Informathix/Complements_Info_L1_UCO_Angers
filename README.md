@@ -5,4 +5,4 @@ Où on apprend à utiliser Git pour gérer un projet à plusieurs
 
 On vérifie les conflits de version
 
-On crée unconflit
+On crée un conflit : c'est un autre fichier
