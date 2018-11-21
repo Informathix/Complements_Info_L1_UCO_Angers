@@ -1,7 +1,7 @@
-Apres avoir cliqué sur la version RAW du fichier MIB.py présent sur ce répertoire, enregistrez-le sur votre répertoire personnel distant (sur github) et sur votre propre machine. 
+Apres avoir cliqué sur la version [RAW](https://raw.githubusercontent.com/Informathix/Complements_Info_L1_UCO_Angers/master/TP_ALIENS_UCO/MaBase_MIB.py) du fichier `MaBase_MIB.py` présent sur ce répertoire, enregistrez-le sur votre répertoire personnel distant (sur github) et sur votre propre machine. 
 
 Répondez ensuite aux questions suivantes en utilisant le fichier MaBase_MIB.py (des réponses sont donnéespour vous aider).
-Pour cela créer un fichier MIB_exos.py :
+Pour cela créez un fichier MIB_exos.py :
 
 ```python
 # -*- coding: utf-8 -*-
