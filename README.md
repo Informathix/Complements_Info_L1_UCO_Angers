@@ -1,8 +1,1 @@
-# TDmodelisationUCO_L1
-TD compléments d'informatique L1 UCO 2018
-
-Où on apprend à utiliser Git pour gérer un projet à plusieurs
-
-On vérifie les conflits de version
-
-On crée une modification sur le fichier README original
+# Cours du module Compléments d'Informatique - L1 - UCO Angers
