@@ -1,0 +1,1774 @@
+%\RequirePackage{atbegshi}
+\documentclass[french]{beamer}
+\usepackage{etex}
+
+\usepackage[beamer,utf8x]{preambuleTrm}
+
+
+
+\usepackage{iwona}
+
+
+\mode<presentation>
+{
+  %\usetheme{Bergen}%Montpellier,Madrid}
+  % or ...Frankfurt, 
+  \usetheme[secheader]{Montpellier}
+
+  %\setbeamercovered{highly dynamic}
+  % or whatever (possibly just delete it)
+  \usefonttheme{progressbar}
+%  \useoutertheme{progressbar}
+  %\useinnertheme{progressbar}
+ % \progressbaroptions{% titlepage=normal,
+  %  imagename=/home/moi/Photos/Maths/prisoner
+%}
+}
+
+%\usepackage{elephantbird}
+\newcommand\MyBox[2][XXX]{%
+  \fbox{\tabular[b]{C{#1}} #2 \endtabular}}
+
+\setbeamertemplate{footline}[frame number]
+\beamertemplatenavigationsymbolsempty
+
+%\usepackage[french,vlined,boxed]{algorithm2e}
+\usepackage{bookmark,multido}
+%\usepackage{xlop}
+
+\ifpdf \DeclareGraphicsRule{*}{mps}{*}{} \fi
+\usepackage{tikz, pgfkeys, pgfopts, xstring}
+\usetikzlibrary{automata,fit,trees,matrix,arrows,decorations.markings,shapes,arrows,chains,positioning,intersections,backgrounds,calc,through,mindmap,shadows,patterns, positioning}
+
+\usepackage{tikz-uml}
+
+\usepackage[underline=true,rounded corners=false]{pgf-umlsd}
+
+\hypersetup{pdfpagemode=FullScreen}
+
+\usepackage[detect-all]{siunitx}
+
+\usepackage{caption}
+\captionsetup{labelformat=empty,font=footnotesize}
+
+\usepackage[square]{daedale}
+\bibliographystyle{cyclope}
+
+
+\usepackage{algo}
+
+\renewcommand{\algocommentfont}{\tiny\ttfamily\itshape}
+\renewcommand{\algokeywordfont}{\small\ttfamily}
+\renewcommand{\algotextfont}{\footnotesize\ttfamily}
+\newtheorem{exercice}{Exercice}
+
+
+\setlength{\columnseprule}{0pt}
+
+%\setlength{\parskip}{0pt}
+
+
+\graphicspath{{/home/moi/IUT/Figures/}{/home/moi/VISA_III/figures_visa/}{/home/moi/Lycee/TDmaple/2006_7/}{/home/moi/Figures/Arbres_Graphes/}{/home/moi/Figures/FigSTI/}{/home/moi/Figures/FigMaple/}{/home/moi/Photos/Maths/}{/home/moi/Photos/Tehessin/}{/home/moi/Figures/FigSTI/}{/home/moi/Figures/FigSeconde/}{/home/moi/Lycee/Informatique/XCAS/2008_9/}{/home/moi/Lycee/TDmaple/2008_9/}{/home/moi/IUT/Thierry/Conversions/}{/home/moi/Photos/informathix/}{/home/moi/Lycee/Informatique/PafAlgo/}{/home/moi/Figures/figuresAlice/}{/home/moi/Figures/FigSeconde/}{/home/moi/Biocam/robot/}{/home/moi/Biocam/CoursIni3d/}{/home/moi/Biocam/central/figures/}{/home/moi/Biocam/central/}{/home/moi/IUT/INFO2/Images/}{/home/moi/IUT/INFO2/2011_12/graphes/}{/home/moi/IUT/INFO1/CM1/}{/home/moi/Figures/figuresTS/}{/home/moi/Photos/Tehessin/}{/home/moi/Figures/FigSTI/}{/home/moi/Alice/figures3/}{/home/moi/Alice/figures3/newcourbes/}{/home/moi/Alice/figures/}{/home/moi/Figures/figuresAlice/}{/home/moi/Photos/Maths/}{/home/moi/Lycee/TS/}{/home/moi/Lycee/TS/2009_10/}{/home/moi/Figures/FigMaple/}{/home/moi/Figures/figuresTS/newcourbes/}{/home/moi/Figures/FigEspace/}{/home/moi/PROG/HASKELL/FLOAT/}{/home/moi/LYCEE/LIL/4e/2016_17/Images/}{/home/moi/LYCEE/LIL/2nde/2016_17/Images/}{/home/moi/LYCEE/LIL/2nde/2016_17/fonctions/}{/home/moi/LYCEE/LIL/1S/2016_17/Images/}{/home/moi/LYCEE/LIL/1S/2016_17/Images/}{/home/moi/LYCEE/LIL/1S/2016_17/suites/suites1es/}{/home/moi/LYCEE/LIL/1S/2016_17/trigo/}{/home/moi/Photos/Maths/CAPTURES_TI/Suites/}{/home/moi/LYCEE/FIGURES/}{/home/moi/UCO/L1/ANGERS2018/Images/}}
+
+
+
+\setcounter{tocdepth}{2} %\setcounter{page}{0}
+
+
+
+
+\usepackage{fdsymbol}
+
+
+
+
+
+\setbeamercolor{block title}{use=structure,fg=black,bg=blue!55!white}
+\setbeamercolor{block body}{use=structure,fg=black,bg=blue!10!white}
+
+
+\setbeamercolor{block title example}{use=structure,fg=black,bg=green!75!white}
+\setbeamercolor{block body example}{use=structure,fg=black,bg=green!10!white}
+
+\setbeamercolor{block title alert}{use=structure,fg=black,bg=red!75!white}
+\setbeamercolor{block body alert}{use=structure,fg=black,bg=red!10!white}
+
+
+
+\setbeamerfont{block body}{size*={10}{12}}
+\setbeamerfont{block body alerted}{size*={10}{12}}
+\setbeamerfont{block body example}{size*={10}{12}}
+
+
+\renewenvironment{exercise}{\begin{exampleblock}{Recherche}}{\end{exampleblock}}
+
+\usepackage{scalefnt}
+\setbeamertemplate{theorems}[normal size]
+
+
+\begin{document}
+
+
+\title[]% (optional, use only with long paper titles)
+{Compléments d'informatique}
+
+\subtitle{L1 MIASHS}
+
+\author[] % (optional, use only with lots of authors)
+{Guillaume CONNAN }
+% - Give the names in the same order as the appear in the paper.
+% - Use the inst{?} command only if the authors have different
+%   affiliation.
+
+\institute{Université Catholique de l'Ouest - Angers}% (optional, but mostly needed)
+
+\logo{\includegraphics[width=0.1\textwidth]{logoUCO}}
+
+%\logo{\includegraphics[scale=0.15]{big_connan}}
+
+\date[] % (optional, should be abbreviation of conference name)
+{Novembre-Décembre 2018}
+% - Either use conference name or its abbreviation.
+% - Not really informative to the audience, more for people (including
+%   yourself) who are reading the slides online
+
+\subject{ }
+
+
+
+\beamerdefaultoverlayspecification{<+->}
+
+
+\AtBeginSubsection[]
+{\scriptsize
+  \begin{frame}<beamer>
+    \frametitle{Sommaire}
+ {\tiny
+\begin{multicols}{2}
+    \tableofcontents[currentsection,currentsubsection]
+       \end{multicols}
+}
+
+  \end{frame}
+}
+
+
+
+
+
+\AtBeginSection[]
+{
+  \begin{frame}<beamer>
+    \frametitle{Sommaire}
+ {\scriptsize
+\begin{multicols}{2}
+    \tableofcontents[currentsection]
+       \end{multicols}
+}
+
+  \end{frame}
+}
+
+
+% If you wish to uncover everything in a step-wise fashion, uncomment
+% the following command: 
+
+\beamerdefaultoverlayspecification{<+->}
+
+
+
+
+\newcommand{\TR}{\mathcal{T}}
+
+
+\begin{frame}
+%\ThisCenterWallPaper{1}{logoiremBigInv}
+ \Large \titlepage 
+\end{frame}
+
+\begin{frame}
+ \frametitle{Sommaire}
+{\scriptsize
+\begin{multicols}{2} 
+ \tableofcontents
+\end{multicols}
+}
+
+ 
+ \end{frame}
+
+\normalsize
+
+
+% début
+
+
+
+\section{Descriptif}
+
+\begin{frame}
+  \begin{enumerate}
+  \item Modélisation d'une application
+  \item Découverte et utilisation des objets
+  \item Documentation d'une application
+  \item Compléments d'algorithmique
+  \item Réalisation d'un projet en binôme
+  \end{enumerate}
+\end{frame}
+
+
+\section{Modélisation}
+
+\begin{frame}
+  \begin{quote}
+    Avant donc que d'écrire, apprenez à penser.\\
+Selon que notre idée est plus ou moins obscure,\\
+L'expression la suit, ou moins nette, ou plus pure.\\
+Ce que l'on conçoit bien s'énonce clairement.\\
+...\\
+Hâtez-vous lentement, et, sans perdre courage,\\
+Vingt fois sur le métier remettez votre ouvrage\\
+Polissez-le sans cesse et le repolissez ;\\
+Ajoutez quelquefois, et souvent effacez. \\
+\end{quote}
+
+\pause
+
+\begin{flushright}
+  Nicolas \textsc{Boileau} in \textit{L'Art poétique} - 1674
+\end{flushright}
+\end{frame}
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{numerobis}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\begin{frame}\frametitle{Un cas simple d'étude}
+Le service d'état-civil de la mairie  d'Angers demande un outil pour enregistrer
+des  personnes  et pour  mettre  à  jour  des  changements dans  leur  situation
+(mariage, décés, etc.)
+
+\pause
+
+Nous allons  nous restreindre dans un  premier temps au cas  de l'enregistrement
+d'une personne et d'un éventuel mariage.
+\end{frame}
+
+
+
+
+\begin{frame}
+  \begin{itemize}
+  \item UML  est le langage  de modélisation orienté objet  le plus connu  et le
+    plus utilisé;
+  \item Objectif: cadre unifié dans un contexte industriel;
+    \item Succès: simplicité ! structures intuitives;
+    \item UML 2.0 est apparu en 2002.
+     
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  UML : un problème $\longrightarrow$ un \textbf{diagramme}
+  \begin{itemize}
+  \item diagramme de classe
+  \item diagramme de cas d'utilisation
+  \item diagramme de déploiement
+  \item diagramme de séquence
+  \item diagramme d'activité
+    \item ... une vingtaine en tout!
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{DiagramXKCD}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \begin{enumerate}
+  \item Réfléchir
+  \item Définir la structure \og gros grain\fg{}
+  \item Documenter
+  \item Guider le développement
+  \item Tester
+  \end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+  MAIS
+ \begin{itemize}
+  \item  les logiciels  sont  de plus  en  plus complexes  et  ont besoin  d'être
+    sécurisés;
+  \item il faut de la rigueur et de la précision;
+    \item techniques fiables à base mathématique;
+  \item \textbf{Méthodes formelles}: méthode B, Esterel, Coq,...
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{TabFormellesUml}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\section{Vision statique : diagramme de Classes}
+
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[height=\textheight]{DiagIllisisble}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  
+ \begin{itemize}\frametitle{Classes}
+  \item  Une diagramme de classes donne une vue graphique de la structure statique d'un
+    système;
+    \item Une  classe représente  la strucuture  commune d'un  ensemble d'objets:
+      personne, vélo, roue, cadre...
+      \item Une  classe est représentée par  un rectangle, son nom  commence par
+        une majuscule et le rectangle peut contenir trois parties
+      \end{itemize}
+    \end{frame}
+
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlemptyclass{Vélo}
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}\frametitle{Attributs}
+  \begin{itemize}
+\item Un  attribut est  une caractéristique, une  information contenue  dans une
+  classe;
+  \item  la taille,  la  marque,  le modèle,  l'année  de  fabrication sont  des
+    attributs de vélo
+    \item  Moins bricolo:  un attribut  est une  relation binaire  d'un ensemble
+      d'objets vers un ensemble de valeurs:
+
+      \pause Voiture numéro 3 \pause (\textit{Objet})\pause \ a\_pour\_couleur
+      \pause (\textit{Attribut})\pause \ Jaune \pause (\textit{Valeur})
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlclass{Vélo}{Marque: String\\ Modèle: String\\ Année: Integer\\ /Âge: Integer}{}
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Opérations}
+
+  \begin{itemize}
+  \item Une  opération est un service  qu'un objet (une \textit{instance}  de la
+    classe) peut exécuter;
+    \item fonctionner, en\_réparation
+  \end{itemize}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlclass{Personne}{Nom:  String\\ Naissance: Integer\\  /Âge:
+      Integer}{se\_marier(p: Personne): void }
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+
+
+\begin{frame}\frametitle{Héritage}
+  \begin{itemize}
+  \item c'est une relation entre une classe et une classe plus générale;
+    \item un vélo est un moyen de transport individuel, la voiture aussi,le tram
+      est un moyen transport  en commun, un moyen de transport  en commun est un
+      moyen de transport...
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{tikzpicture}
+      \umlsimpleclass{Transport}
+      \umlsimpleclass[x=-2, y=-3, anchor=north]{Transport individuel}
+      \umlsimpleclass[x=3, y=-3, anchor=north]{Transport commun}
+      \umlsimpleclass[x=3, y=-6, anchor=north]{Bus}
+      \umlsimpleclass[x=-4, y=-6, anchor=north]{Vélo}
+      \umlsimpleclass[x=0, y=-6, anchor=north]{Voiture}
+       \umlVHVinherit{Transport commun}{Transport}
+       \umlVHVinherit{Transport individuel}{Transport}
+       \umlVHVinherit{Bus}{Transport commun}
+       \umlVHVinherit{Voiture}{Transport individuel}
+       \umlVHVinherit{Vélo}{Transport individuel}
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
+
+\begin{frame}\frametitle{Associations}
+  \begin{itemize}
+  \item une association sera de  manière privilégiée binaire: elle connecte deux
+    éléments (classes le plus souvent)
+  \item une associations binaire a deux \textit{association ends}
+  \item une association est paramétrée par au moins un des éléments suivants:
+    \begin{itemize}
+    \item un nom (minuscule) décrivant le rôle joué par une entité par rapport à
+      l'autre. Si l'association est bidirectionnelle, un verbe à l'actif dans un
+      sens est lu au passif dans l'autre sens;
+    \item Une multiplicité (0,1, *, 1..*, 0..2, etc.)
+    \item un genre d'agrégation dans le cas où l'association n'est pas symétrique:
+      \begin{itemize}
+      \item  \textit{composite}($\vardiamondsuit$):  la destruction  d'une  entité
+        entraîne la destruction  de l'autre. Un élément ne  peut appartenir qu'à
+        un seul agrégat \textit{composite} (chat / pattes)
+       \item simple ($\diamond$) (voiture/roue)
+      \end{itemize}
+      
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlsimpleclass{Université}
+    \umlsimpleclass[x=6]{Faculté}
+    \umlsimpleclass[y=-3]{Étudiant}
+    \umlsimpleclass[x=6,y=-3]{Cours}
+    \umlcompo[mult1=1, mult2=1..*]{Université}{Faculté}
+    \umlaggreg[mult1=1.., mult2=*]{Université}{Étudiant}
+    \umlassoc[mult1=1..*,stereo=suit,mult2=1..*]{Étudiant}{Cours}
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{AccesBatiment}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+\begin{frame}\frametitle{Contraintes et notes}
+  \begin{itemize}
+  \item Pour arriver à  un semblant de sérieux par rapport  aux méthodes formelles, on
+  doit compléter le diagramme de classe par des indications de contraintes.
+
+\item Trop souvent, ces contraintes sont écrites en langage naturel.
+
+  \item Il faut utiliser le langage OCL (\textit{Object Constraint Language}) pour éviter le bricolage.
+  \end{itemize}
+  
+\end{frame}
+
+
+\begin{frame}
+  \begin{quote}
+    1842 - Ada Lovelace writes the first program. She is hampered in her efforts
+    by the minor inconvenience that she doesn't have any actual computers to run
+    her code. Enterprise  architects will later relearn her  techniques in order
+    to program in UML. 
+  \end{quote}
+\end{frame}
+
+
+\begin{frame}
+  \begin{itemize}
+  \item Vous sautez de l'avion;
+    \item Puis vous  lisez la contrainte: \og avant de  sauter s'assurer d'avoir
+      enfilé un parachute opérationnel\fg{}
+    \item Trop tard...
+      \item en passant: interprété/compilé
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{Shadock}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+    \begin{quote}
+      L'administration aura  désormais deux mois  pour répondre au  courrier des
+      usagers: les fonctionnaires ont choisi juin et novembre.
+    \end{quote}
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlsimpleclass{Personne}
+    \umlassoc[arg=marier, angle1=0, angle2=60, mult1=0..1, loopsize=3cm]{Personne}{Personne}
+  \end{tikzpicture}
+\end{center}
+  \pause
+
+  \begin{center}
+    Quels problèmes?
+  \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlsimpleclass{Personne}
+    \umlassoc[arg=marier, angle1=0, angle2=60, mult1=0..1, loopsize=3cm]{Personne}{Personne}
+    \umlnote[y=-2, width=7cm]{Personne}{Il faut être majeur, ne pas se marier à soi-même,
+      ne pas se marier si on est déjà marié}
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+
+\begin{frame}
+  \textcolor{white}{.}
+  \vspace{-2cm}
+  \begin{center}
+  \begin{tikzpicture}
+    \umlsimpleclass[y=3]{Personne}
+    \umlassoc[arg=marier, angle1=0, angle2=60, mult1=0..1, loopsize=3cm]{Personne}{Personne}
+    \umlnote[y=0, width=10cm]{Personne}{{\tiny
+      \texttt{context Personne::marier(p :Personne)\\
+        pre pas\_marier\_soi-meme: not(p = self)\\
+        - - aucune des personnes ne doit avoir été mariée\\
+        pre pas\_deja\_marie : self.spouse->size() = 0 and p.spouse->size()=0\\
+        pre majeur : self.age >= 18 and p.age >= 18\\
+        post : self.spouse = p and p.spouse = self
+      }}
+    }
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\section{Python}
+
+\begin{frame}
+  \begin{quote}
+    1991  -  Dutch programmer  Guido  van  Rossum  travels  to Argentina  for  a
+    mysterious operation. He returns with  a large cranial scar, invents Python,
+    is declared Dictator for Life by  legions of followers, and announces to the
+    world that "There Is Only One Way to Do It." Poland becomes nervous. 
+  \end{quote}
+\end{frame}
+
+
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[height=.7\textheight]{pygravity}
+\end{center}
+%\end{figure}
+\pause
+%\begin{figure}
+\begin{center}
+  \includegraphics[height=.2\textheight]{pygravity2}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+
+
+
+
+\section{Juste assez de POO pour traduire notre UML en actes}
+
+
+\begin{frame}
+  
+Vous  vous   êtes  sûrement  demandés   pourquoi  les  appels   de  \og
+fonctions\fg{} n'ont pas toujours la même syntaxe...
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+Moi[1]: xs = [1,2]
+
+Moi[2]: append(xs, 3)
+Traceback (most recent call last):
+
+  File "<ipython-input-2-c65410c1a3c8>", line 1, in <module>
+    append(xs, 3)
+
+NameError: name 'append' is not defined
+\end{pythoncode}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+Moi[3]: xs.append(3)
+
+Moi[4]: xs
+Python[4]: [1, 2, 3]
+\end{pythoncode}
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+
+Moi[6]: xs.len()
+Traceback (most recent call last):
+
+  File "<ipython-input-6-bedaf6ec6921>", line 1, in <module>
+    xs.len()
+
+AttributeError: 'list' object has no attribute 'len'
+\end{pythoncode}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+Moi[7]: len(xs)
+Python[7]: 3
+\end{pythoncode}
+  
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  
+Même les nombres ont ce genre de \og fonctions\fg{} bizarres qui suivent un
+point:
+
+\pause
+
+\begin{pythoncode}
+Moi[10]: 1.2.is_integer()
+Python[10]: False
+
+Moi[11]: 1.0.is_integer()
+Python[11]: True
+\end{pythoncode}
+
+
+  
+\end{frame}
+
+
+
+\begin{frame}
+  
+
+Une \textit{classe} correspond à un \og moule\fg{} permettant de créer
+un type d'objet.
+
+Il ne faut pas confondre la classe avec l'objet (il vaut mieux manger
+le gâteau que le moule).
+
+\end{frame}
+
+
+\begin{frame}
+  
+Prenons  un exemple:  vous  êtes Saroumane  et vous  avez  un moule  à
+orques.     Vous      pouvez     créer     ainsi      une     infinité
+d'orques.   Informatiquement    la   classe    \texttt{Orque}   permet
+d'\textit{instancier} un objet de type orque.
+
+
+\pause
+
+
+Un orque a un nom et un poids: ce sont des \textit{attributs} (ses caractéristiques). Il peut
+effectuer un salut: c'est une \textit{méthode} (ce que l'objet peut faire).
+
+\end{frame}
+
+
+
+
+\begin{frame}
+  \begin{center}
+  \begin{tikzpicture}
+    \begin{umlclass}{Orque}{nom \\ poids \\ maitre}{salut()}
+    \end{umlclass}
+  \end{tikzpicture}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+class Orque:
+
+    nom    = ""
+    poids  = 0
+    maitre = ""
+
+    def salut(self):
+        print("Ash nazg durbatulûk! Mon nom est %s" % self.nom)
+\end{pythoncode}
+
+
+  
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [76]: a = Orque()
+
+In [77]: a.nom = "Grishnákh"
+
+In [78]: a.salut()
+Ash nazg durbatulûk! Mon nom est Grishnákh
+
+In [79]: a.age = 2
+
+In [80]: b = Orque()
+
+In [81]: b.nom = "Uglúk"
+
+In [82]: b.salut()
+Ash nazg durbatulûk! Mon nom est Uglúk
+
+In [83]: a.maitre = "Saroumane"
+
+In [84]: b.maitre
+Out[84]: 'Sauron'
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+class Orque:
+
+    def __init__(self):
+        self.nom    = ""
+        self.poids  = 0
+        self.maitre = "Sauron"
+
+    def salut(self):
+        print("Ash nazg durbatulûk! Mon nom est %s" % self.nom)
+\end{pythoncode}
+
+
+  
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+class Orque:
+
+    def __init__(self, nom, poids, maitre = "Sauron"):
+        self.nom    = nom
+        self.poids  = poids
+        self.maitre = maitre
+
+    def salut(self):
+        print("Ash nazg durbatulûk! Mon nom est %s" % self.nom)
+\end{pythoncode}
+
+
+  
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+In [106]: a = Orque("Truc",3)
+
+In [107]: a.maitre
+Out[107]: 'Sauron'
+
+In [108]: a = Orque("Truc","Sauron")
+
+In [109]: a.maitre
+Out[109]: 'Sauron'
+
+In [110]: a.poids
+Out[110]: 'Sauron'
+
+In [111]: a = Orque("Truc",100,"Sauron")
+
+In [112]: a.poids
+Out[112]: 100
+
+In [113]: a.maitre
+Out[113]: 'Sauron'
+
+In [114]: a.nom
+Out[114]: 'Truc'
+\end{pythoncode}
+
+
+  
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+class Orque:
+
+    def __init__(self, nom:str, poids:int, maitre:str = "Sauron") -> None:
+        self.nom    = nom
+        self.poids  = poids
+        self.maitre = maitre
+
+    def salut(self)->None:
+        print("Ash nazg durbatulûk! Mon nom est %s" % self.nom)
+\end{pythoncode}
+
+
+\end{frame}
+
+
+  \begin{frame}[fragile]
+    \begin{pythoncode}
+Moi[22]: a = Orque("Truc","Sauron")
+
+Moi[23]: a.poids
+Python[23]: 'Sauron'
+\end{pythoncode}
+  \end{frame}
+
+
+
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+class Orque:
+
+    def __init__(self, nom:str, poids:int, maitre:str = "Sauron") -> None :
+        assert type(poids) == int, "le poids est un entier"
+        self.nom    = nom
+        self.poids  = poids
+        self.maitre = maitre
+
+    def salut(self)->None:
+        print("Ash nazg durbatulûk! Mon nom est %s" % self.nom)
+\end{pythoncode}
+
+
+\end{frame}
+
+
+  \begin{frame}[fragile]
+    \begin{pythoncode}
+Moi[25]: a = Orque("Truc","Sauron")
+Traceback (most recent call last):
+
+  File "<ipython-input-25-4b1feddb2229>", line 1, in <module>
+    a = Orque("Truc","Sauron")
+
+  File "/home/moi/UCO/L1/ANGERS2018/Python/Orques.py", line 12, in __init__
+    assert type(poids) == int, "le poids est un entier"
+
+AssertionError: le poids est un entier
+\end{pythoncode}
+  \end{frame}
+
+
+
+
+  \begin{frame}
+    
+Imaginez maintenant  que vous  êtes JRR  \textsc{Tolkien} et  que vous
+voulez fabriquer  des Hobbits. Vous  vous dites qu'il suffit  de créer
+une classe \texttt{Hobbit}:
+
+\pause
+
+\begin{center}
+  \begin{tikzpicture}
+    \begin{umlclass}{Hobbit}{nom \\ prenom \\ poids}{salut()}
+    \end{umlclass}
+  \end{tikzpicture}
+\end{center}
+  \end{frame}
+
+
+  \begin{frame}[fragile]
+    \begin{pythoncode}
+class Hobbit:
+
+    def __init__(self, nom:str, prenom:str, poids:int) -> None:
+        assert type(poids) == int, "le poids est un entier"
+        assert type(nom) == str and type(prenom) == str, "Le nom et le prénom sont des String"
+        self.nom    = nom
+        self.prenom = prenom
+        self.poids  = poids
+
+    def salut(self) -> None:
+        print("Bonjour! Mon nom est %s %s" % (self.prenom, self.nom))
+\end{pythoncode}
+
+
+    
+  \end{frame}
+
+  \begin{frame}[fragile]
+    \begin{pythoncode}
+Moi[27]: a = Hobbit("Sacquet", "Bilbo", 50)
+
+Moi[28]: a.salut()
+Bonjour! Mon nom est Bilbo Sacquet
+\end{pythoncode}
+
+
+  \end{frame}
+
+
+
+
+  \begin{frame}
+    
+Et ensuite il y a les Elfes, les Nains, etc.
+
+On remarque cependant  que les Orques comme les Hobbits  ont un nom et
+un poids. 
+
+On  peut  alors créer  une  \og  super-classe\fg{} \texttt{Etre}  dont
+\texttt{Hobbit}   et  \texttt{Orque}   serait  des   sous-classes  qui
+\textit{héritent} de ses attributs...comme en UML.
+  \end{frame}
+
+
+  \begin{frame}[fragile]
+    \begin{pythoncode}
+class Etre(object):
+
+    def __init__(self, appellation:str, poids:int, bonjour:str) -> None:
+        assert type(poids) == int, "le poids est un entier"
+        assert type(appellation) == str and type(bonjour) == str, "Le nom et la salutation sont des String"
+        self.appellation = appellation
+        self.poids       = poids
+        self.bonjour     = bonjour
+
+    def salut(self) -> None:
+        print("%s ! Mon nom est %s" % (self.bonjour, self.appellation))
+
+    def masse(self) -> None:
+        print("Je pèse %f kg" % self.poids)
+
+
+class Orque(Etre):
+
+    def __init__(self, nom:str, poids:int, maitre = "Sauron"):
+        Etre.__init__(self,nom,poids,"Ash nazg durbatulûk")
+        self.maitre = maitre
+
+class Hobbit(Etre):
+
+    def __init__(self, nom:str, prenom:str, poids:int):
+        Etre.__init__(self,prenom + ' ' + nom, poids, "Bonjour")
+        self.prenom  = prenom
+\end{pythoncode}
+
+
+    
+  \end{frame}
+
+
+
+  \begin{frame}[fragile]
+    \begin{pythoncode}
+Moi[31]: a = Hobbit("Sacquet", "Bilbo", 50)
+
+Moi[32]: a.masse()
+Je pèse 50.000000 kg
+
+Moi[33]: a.salut()
+Bonjour ! Mon nom est Bilbo Sacquet
+
+Moi[34]: b = Orque("Uglúk",100)
+
+Moi[35]: b.salut()
+Ash nazg durbatulûk ! Mon nom est Uglúk
+
+Moi[36]: c = Orque("Uglúk","Saroumane")
+Traceback (most recent call last):
+
+  File "<ipython-input-36-44938988904b>", line 1, in <module>
+    c = Orque("Uglúk","Saroumane")
+
+  File "/home/moi/UCO/L1/ANGERS2018/Python/Orques.py", line 29, in __init__
+    Etre.__init__(self,nom,poids,"Ash nazg durbatulûk")
+
+  File "/home/moi/UCO/L1/ANGERS2018/Python/Orques.py", line 13, in __init__
+    assert type(poids) == int, "le poids est un entier"
+
+AssertionError: le poids est un entier
+\end{pythoncode}
+
+
+  \end{frame}
+
+
+
+  \section{Diagramme de cas d'utilisation}
+
+
+  \begin{frame}
+    
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{UseCase1}
+\end{center}
+%\end{figure}
+
+\pause
+
+<<include>> : je fais toujours 
+\pause
+<<extend>> : je choisis de faire
+
+\pause comment savoir si je choisis de faire une action?
+
+\end{frame}
+
+
+
+\section{Diagramme d'activité}
+
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{ReveilEtudiantActivite}
+\end{center}
+%\end{figure}
+\end{frame}
+
+
+  \section{Diagramme de séquence}
+
+
+  \begin{frame}\frametitle{Diagramme de séquence}
+    \begin{itemize}
+    \item Représente une interaction entre des instances qui jouent des rôles.
+    \item Dynamique car permet de visualiser une durée de vie.
+    \item  L'interaction  se fait  par  envoi  de \og  messages\fg{}:  création,
+      destruction...
+    \item Sémantique un peu floue...
+    \end{itemize}
+   
+  \end{frame}
+
+
+
+  \begin{frame}
+    \begin{sequencediagram}
+\newthread{t}{Instance 1: Abonné}
+\newinst[1]{s}{Le Système:}
+\begin{call}{t}{ Chercher un livre() }{s}{}
+\end{call}
+\begin{call}{t}{ Authentification() }{s}{}
+\end{call}
+\begin{call}{t}{ Emprunter() }{s}{}
+  \begin{callself}{s}{Vérifier les demandes()}{}
+  \end{callself}
+\end{call}
+
+\end{sequencediagram}
+  \end{frame}
+
+
+\section{GIT}
+
+
+\begin{frame}
+  Vous créerez en TD un dépôt GIT pour travailler à deux sur un même projet.
+
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{GitHub}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\begin{frame}
+  {\LARGE \href{https://github.com/}{https://github.com/}}
+
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{GitHub2}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+\section{Dictionnaires}
+
+
+\subsection{Découverte}
+
+\begin{frame}[fragile]
+  Ensemble contenant des éléments auxquels on  a accès à l'aide de clés choisies
+  par le créateur...
+
+  \pause
+
+  \begin{pythoncode}
+In [45]: Tel = {}
+
+In [46]: Tel['Roger'] = '06 12 11 13 20'
+
+In [47]: Tel
+Out[47]: {'Roger': '06 12 11 13 20'}
+
+In [48]: Tel['Roger']
+Out[48]: '06 12 11 13 20'
+\end{pythoncode}
+
+  
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [49]: Tel['Josette'] = '07 00 00 01 00'
+
+In [50]: Tel['Bill'] = '06 05 04 03 02'
+
+In [51]: Tel
+Out[51]: 
+{'Bill': '06 05 04 03 02',
+ 'Josette': '07 00 00 01 00',
+ 'Roger': '06 12 11 13 20'}
+
+In [52]: les06 = {ami for ami in Tel if Tel[ami][:2] == '06'}
+
+In [53]: les06
+Out[53]: {'Bill', 'Roger'}
+\end{pythoncode}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [54]: del Tel['Josette']
+
+In [55]: Tel
+Out[55]: {'Bill': '06 05 04 03 02', 'Roger': '06 12 11 13 20'}
+\end{pythoncode}
+
+  \pause
+
+\begin{pythoncode}
+In [56]: Tel.keys()
+Out[56]: dict_keys(['Bill', 'Roger'])
+
+In [57]: Tel.values()
+Out[57]: dict_values(['06 05 04 03 02', '06 12 11 13 20'])
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+\subsection{Travail à faire}
+
+
+\begin{frame}
+  Revenons à notre problème d'état-civil.
+
+  \pause
+
+  On veut créer une table qui tient à jour les personnes inscrites.
+
+  \pause
+
+  De quoi a-t-on besoin?
+
+  
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+class Table(object):
+
+    def __init__(self) -> None:
+        self.idmax = 0 # identifiant maxi courant
+        self.taille = 0 # taille du dictionnaire
+        self.table = {} # le dictionnaire
+        self.inscrits = self.table.values() # les inscrits
+
+    def __repr__(self) -> str:
+        t = self.table
+        return str({k: str(t[k]) for k in t.keys()})
+
+    def __getitem__(self, k) -> Inscrit:
+        """ 
+        Pour pouvoir utiliser les crochets
+        Si T est un objet Table
+        T[10] renvoie l'inscrit portant l'identifiant 10
+        """
+        return self.table[k]
+
+
+    def ajoute(self, p:Inscrit) -> None:
+
+
+    def enleve(self, p:Inscrit) -> None:
+   
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+
+\section{Lecture / Écriture de fichiers}
+
+\begin{frame}
+  On dispose de tableaux de données au format CSV
+\end{frame}
+
+\begin{frame}
+  
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{mib}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+
+
+\begin{frame}
+
+%\begin{figure}
+\begin{center}
+  \includegraphics[width=\linewidth]{TableAlien}
+\end{center}
+%\end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]
+
+CSV : Comma Separated Values
+  
+\begin{minted}{text}
+Nom,Sexe,Planete,NoCabine
+Zorglub,M,Trantor,1
+Blorx,M,Euterpe,2
+Urxiz,M,Aurora,3
+Zbleurdite,F,Trantor,4
+Darneurane,M,Trantor,4
+Mulzo,M,Helicon,6
+Zzzzzz,F,Aurora,7
+Arghh,M,Nexon,8
+Joranum,F,Euterpe,9
+ \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+BaseAliens = {
+        Alien('Zorglub', 'M', 'Trantor', '1'),
+        Alien('Blorx', 'M', 'Euterpe', '2'),
+        Alien('Urxiz', 'M', 'Aurora', '3'),
+        Alien('Zbleurdite', 'F', 'Trantor', '4'),
+        Alien('Darneurane', 'M', 'Trantor', '4'),
+        Alien('Mulzo', 'M', 'Helicon', '6'),
+        Alien('Zzzzzz', 'F', 'Aurora', '7'),
+        Alien('Arghh', 'M', 'Nexon', '8'),
+        Alien('Joranum', 'F', 'Euterpe', '9')
+}
+\end{pythoncode}
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+class Alien:
+	def __init__(self, Nom, Sexe, Planete, NoCabine):
+		self.Nom = Nom
+		self.Sexe = Sexe
+		self.Planete = Planete
+		self.NoCabine = NoCabine
+\end{pythoncode}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{minted}{text}
+ /home/moi/UCO/L1/ANGERS2018/Python/MIB_Files:
+  total used in directory 32 available 60318924
+  drwxr-xr-x 2 moi moi 4096 Nov 20 20:53 .
+  drwxr-xr-x 5 moi moi 4096 Nov 20 23:45 ..
+  -rw-r--r-- 1 moi moi  149 Nov 20 20:45 BaseAgents.csv
+  -rw-r--r-- 1 moi moi  199 Nov 20 20:46 BaseAliens.csv
+  -rw-r--r-- 1 moi moi   53 Nov 20 20:46 BaseCabines.csv
+  -rw-r--r-- 1 moi moi   98 Nov 20 10:53 BaseGardiens.csv
+  -rw-r--r-- 1 moi moi  163 Nov 20 20:46 BaseMiams.csv
+  -rw-r--r-- 1 moi moi   31 Nov 20 20:46 BaseResponsables.csv
+\end{minted}
+
+\pause
+  
+\begin{pythoncode}
+mes_csv_file = {Path(f).stem:open(f,"r") for f in glob.glob("./MIB_Files/*.csv")}
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+import glob
+# The glob module finds all the pathnames matching a specified pattern according to the rules used by the Unix shell
+from pathlib import Path
+# The final path component, without its suffix
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+
+
+\begin{frame}[fragile]
+  \begin{pythoncode}
+In [58]: mes_csv_file
+Out[59]: 
+{'BaseAgents': <_io.TextIOWrapper name='./MIB_Files/BaseAgents.csv' mode='r' encoding='UTF-8'>,
+ 'BaseAliens': <_io.TextIOWrapper name='./MIB_Files/BaseAliens.csv' mode='r' encoding='UTF-8'>,
+ 'BaseCabines': <_io.TextIOWrapper name='./MIB_Files/BaseCabines.csv' mode='r' encoding='UTF-8'>,
+ 'BaseGardiens': <_io.TextIOWrapper name='./MIB_Files/BaseGardiens.csv' mode='r' encoding='UTF-8'>,
+ 'BaseMiams': <_io.TextIOWrapper name='./MIB_Files/BaseMiams.csv' mode='r' encoding='UTF-8'>,
+ 'BaseResponsables': <_io.TextIOWrapper name='./MIB_Files/BaseResponsables.csv' mode='r' encoding='UTF-8'>}
+\end{pythoncode}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+mon_chemin = input('Quel est le chemin relatif du répertoire contenant les fichiers csv ?\n')
+#"./MIB_Files/"
+
+mon_alias = input('Alias du fichier py créé (sera ./MaBase_alias.py) ?\n')
+
+mon_fic = "MaBase_%s.py" % mon_alias
+ 
+mes_csv_file = {Path(f).stem:open(f,"r") for f in glob.glob(mon_chemin + "*.csv")}
+
+mes_csv = {Path(f).stem:open(f,"r").readlines() for f in glob.glob(mon_chemin + "*.csv")}
+
+mon_py = open(mon_fic,"w+")
+\end{pythoncode}
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [60]: mes_csv
+Out[60]: 
+{'BaseAgents': ['Nom,Ville\n',
+  'Branno,Terminus\n',
+  'Darell,Terminus\n',
+  'Demerzel,Uco\n',
+  'Seldon,Terminus\n',
+  'Dornick,Kalgan\n',
+  'Hardin,Terminus\n',
+  'Trevize,Hesperos\n',
+  'Pelorat,Kalgan\n',
+  'Riose,Terminus\n'],
+ 'BaseAliens': ['Nom,Sexe,Planete,NoCabine\n',
+  'Zorglub,M,Trantor,1\n',
+  'Blorx,M,Euterpe,2\n',
+  'Urxiz,M,Aurora,3\n',
+  'Zbleurdite,F,Trantor,4\n',
+  'Darneurane,M,Trantor,4\n',
+  'Mulzo,M,Helicon,6\n',
+  'Zzzzzz,F,Aurora,7\n',
+  'Arghh,M,Nexon,8\n',
+  'Joranum,F,Euterpe,9\n'],
+ 'BaseCabines': ['NoCabine,NoAllee\n',
+  '1,1\n',
+  '2,1\n',
+  '3,1\n',
+  '4,1\n',
+  '5,1\n',
+  '6,2\n',
+  '7,2\n',
+  '8,2\n',
+  '9,2\n'],
+ 'BaseGardiens': ['Nom,NoCabine\n',
+  'Branno,1\n',
+  'Darell,2\n',
+  'Demerzel,3\n',
+  'Seldon,4\n',
+  'Dornick,5\n',
+  'Hardin,6\n',
+  'Trevize,7\n',
+  'Pelorat,8\n',
+  'Riose,9\n'],
+ 'BaseMiams': ['NomAlien,Aliment\n',
+  'Zorglub,Bortsch\n',
+  'Blorx,Bortsch\n',
+  'Urxiz,Zoumise\n',
+  'Zbleurdite,Bortsch\n',
+  'Darneurane,Schwanstucke\n',
+  'Mulzo,Kashpir\n',
+  'Zzzzzz,Kashpir\n',
+  'Arghh,Zoumise\n',
+  'Joranum,Bortsch\n'],
+ 'BaseResponsables': ['NoAllee,Nom\n', '1,Seldon\n', '2,Pelorat\n']}
+\end{pythoncode}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+mon_py = open(mon_fic, "w+")
+\end{pythoncode}
+
+
+  
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [63]: b = 'BaseGardiens'
+
+In [64]: mes_csv[b]
+Out[64]: 
+['Nom,NoCabine\n',
+ 'Branno,1\n',
+ 'Darell,2\n',
+ 'Demerzel,3\n',
+ 'Seldon,4\n',
+ 'Dornick,5\n',
+ 'Hardin,6\n',
+ 'Trevize,7\n',
+ 'Pelorat,8\n',
+ 'Riose,9\n']
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [65]: lignes = mes_csv[b]
+
+In [66]: lignes[2]
+Out[66]: 'Darell,2\n'
+\end{pythoncode}
+  \pause
+
+  \begin{pythoncode}
+In [67]: lignes[2].split()
+Out[67]: ['Darell,2']
+\end{pythoncode}
+
+  \pause
+
+  \begin{pythoncode}
+In [68]: lignes[2].split()[0]
+Out[68]: 'Darell,2'
+\end{pythoncode}
+
+  \pause
+
+  \begin{pythoncode}
+In [69]: lignes[2].split()[0].split(',')
+Out[69]: ['Darell', '2']
+\end{pythoncode}
+
+
+
+\end{frame}
+
+
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+def creer_classes():
+    for b in mes_csv:
+        mon_py.write("class " + b[4:-1] + ":\n\tdef __init__(self")
+        lignes = mes_csv[b]
+        attributs = lignes[0].split()[0].split(',')
+        for a in attributs:
+            mon_py.write(", " + a)
+        mon_py.write("):\n\t\t")
+        for a in attributs:
+            mon_py.write("self.%s = %s\n\t\t" % (a,a))
+        mon_py.write("\n\n")
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+class Alien:
+	def __init__(self, Nom, Sexe, Planete, NoCabine):
+		self.Nom = Nom
+		self.Sexe = Sexe
+		self.Planete = Planete
+		self.NoCabine = NoCabine
+
+
+class Cabine:
+	def __init__(self, NoCabine, NoAllee):
+		self.NoCabine = NoCabine
+		self.NoAllee = NoAllee
+\end{pythoncode}
+
+
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+def creer_bases():
+    for b in mes_csv:
+        nom = b[4:-1]
+        mon_py.write(b + " = { ")
+        lignes = mes_csv[b]
+        for index,ligne in enumerate(lignes[1:]):
+            ligne = ligne.split()[0].split(',')
+            debut = '' if index == 0 else ', '
+            mon_py.write(debut + nom + "(")
+            for att in ligne[:-1]:
+                mon_py.write("'" + att + "', ")
+            mon_py.write("'" + ligne[-1] +"')")
+        mon_py.write(" }\n\n")
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+BaseCabines = { Cabine('1', '1'), Cabine('2', '1'), Cabine('3', '1'), Cabine('4', '1'), Cabine('5', '1'), Cabine('6', '2'), Cabine('7', '2'), Cabine('8', '2'), Cabine('9', '2') }
+
+BaseMiams = { Miam('Zorglub', 'Bortsch'), Miam('Blorx', 'Bortsch'), Miam('Urxiz', 'Zoumise'), Miam('Zbleurdite', 'Bortsch'), Miam('Darneurane', 'Schwanstucke'), Miam('Mulzo', 'Kashpir'), Miam('Zzzzzz', 'Kashpir'), Miam('Arghh', 'Zoumise'), Miam('Joranum', 'Bortsch') }
+\end{pythoncode}
+
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+def ferme():
+    for b in mes_csv_file:
+        mes_csv_file[b].close()
+    mon_py.close()
+\end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+In [70]: villes = { agent.Ville for agent in BaseAgents }
+
+In [71]: villes
+Out[71]: {'Hesperos', 'Kalgan', 'Terminus', 'Uco'}
+\end{pythoncode}
+
+
+\end{frame}
+
+\begin{frame}
+  À vous de jouer...
+\end{frame}
+
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+# -1 l'ensemble des gardiens ;
+gardiens = { gardien.nom for gardien in baseGardien }
+\end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+# -2 l'ensemble des villes où habitent les agents ;
+villes = { agent.ville for agent in baseAgent }
+\end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+# -3 l'ensemble des triplets (no de cabine,alien,gardien) pour chaque cabine ;
+triples = { (alien.no_cabine, alien.nom, gardien.nom)
+            for alien in baseAlien
+            for gardien in baseGardien if gardien.no_cabine == alien.no_cabine}
+\end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+# -4 l'ensemble des couples (alien,allée) pour chaque alien ;
+# -5 l'ensemble de tous les aliens de l'allée 2 ;
+# -6 l'ensemble de toutes les planètes dont sont originaires les aliens habitant une cellule de numéro pair ;
+# -7 l'ensemble des aliens dont les gardiens sont originaires de Terminus ;
+# -8 l'ensemble des gardiens des aliens féminins qui mangent du bortsch ;
+# -9 l'ensemble des cabines dont les gardiens sont originaires de Terminus ou dont les aliens sont des filles
+ \end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+ 
+# Y a-t-il 
+# -10 des aliments qui commencent par la même lettre que le nom du gardien qui surveille l'alien qui les mange ?
+test10 = True in { miam.aliment[0] == gardien.nom[0]
+                   for miam in baseMiam
+                   for alien in baseAlien
+                   for gardien in baseGardien
+                   if  gardien.no_cabine  ==  alien.no_cabine and  alien.nom  ==
+                   miam.nom_alien }
+\end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+# -11 des aliens originaires d'Euterpe ?
+ 
+# Est-ce que 
+# -12 tous les aliens ont un 'x' dans leur nom ?
+\end{pythoncode}
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{pythoncode}
+# -13 tous les aliens qui ont un 'x' dans leur nom ont un gardien qui vient de Terminus ?
+test13 = False not in { agent.ville == 'Terminus' and 'x' in alien.nom
+                        for alien in baseAlien
+                        for gardien in baseGardien
+                        for agent in baseAgent
+                        if gardien.no_cabine == alien.no_cabine and gardien.nom == agent.nom }
+# -14 il existe un alien masculin originaire de Trantor qui mange du Bortsch ou dont le gardien vient de Terminus
+\end{pythoncode}
+\end{frame}
+
+
+
+
+
+
+
+
+
+
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
