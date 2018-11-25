@@ -19,18 +19,17 @@ mes_csv = {Path(f).stem:open(f,"r").readlines() for f in glob.glob(mon_chemin + 
 
 mon_py = open(mon_fic,"w+")
 
+mon_py.write("from dataclasses import dataclass\n\n")
+
 
 def creer_classes():
     for b in mes_csv:
-        mon_py.write("class " + b[4:-1] + ":\n\tdef __init__(self")
+        mon_py.write("@dataclass(frozen=True)\nclass " + b[4:-1] + ":\n\t")
         lignes = mes_csv[b]
         attributs = lignes[0].split()[0].split(',')
         for a in attributs:
-            mon_py.write(", " + a)
-        mon_py.write("):\n\t\t")
-        for a in attributs:
-            mon_py.write("self.%s = %s\n\t\t" % (a,a))
-        mon_py.write("\n\n")
+            mon_py.write("%s: str\n\t" % a)
+        mon_py.write("\n")
         
             
 def creer_bases():
