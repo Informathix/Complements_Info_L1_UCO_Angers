@@ -21,7 +21,7 @@ mystèrieusement vous ferez apparaître le nom du projet et vos deux noms.
  
 Vous m'inviterez à partager vos projets...(informathix)
 
-Vous pourrez regarder à titre de curiosité quelques présentations de projets de jeux en python dans la liste des fichiers de ce répertoire. Il y manque cependant la partie UML.
+*Vous pourrez regarder à titre de curiosité quelques présentations de projets de jeux en python dans la liste des fichiers de ce répertoire. Il y manque cependant la partie UML.*
 
 **Vous veillerez à bien organiser votre répertoire. Votre fichier final doit être exécutable directement : je dois lancer un `python main.py` et tout doit fonctionner tout seul.** 
 
