@@ -21,6 +21,8 @@ mystèrieusement vous ferez apparaître le nom du projet et vos deux noms.
  
 Vous m'inviterez à partager vos projets...(informathix)
 
+**Inscrivez-vous sur [CETTE PAGE](https://univuco-my.sharepoint.com/:x:/g/personal/gconnan_uco_fr/Ed_8h-CyUydHnkQmsP2pqsMBCKZa11esF5qYN_ttqQefxw?e=Orq5sH)**
+
 *Vous pourrez regarder à titre de curiosité quelques présentations de projets de jeux en python dans la liste des fichiers de ce répertoire. Il y manque cependant la partie UML.*
 
 **Vous veillerez à bien organiser votre répertoire. Votre fichier final doit être exécutable directement : je dois lancer un `python main.py` et tout doit fonctionner tout seul.** 
